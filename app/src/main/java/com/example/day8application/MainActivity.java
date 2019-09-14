@@ -13,6 +13,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     ArrayList<Course> courseList = new ArrayList<>();
     ArrayList<HashMap<String, String>> data;
     TextView lblCourseCode, lblCourseName, lblStartDate, lblLength;
+    Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -158,8 +160,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        getMenuInflater().inflate(R.menu.mainmenu, menu);
-        return super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mainmenu, menu);
+        return true;
     }
 
     @Override
