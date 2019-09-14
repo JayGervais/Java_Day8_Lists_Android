@@ -3,9 +3,11 @@ package com.example.day8application;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -43,10 +45,10 @@ public class MainActivity extends AppCompatActivity
         // create hash map
         data = new ArrayList<>();
 
-//        HashMap<String, String> map = new HashMap<>();
-//        map.put("code", "CMPP264");
-//        map.put("name", "Java Programming");
-//        data.add(map);
+        // set scroll to true for list
+        lvCourses.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+        lvCourses.setStackFromBottom(true);
+
 
         // course item
         String[] from = { "code", "name" };
@@ -79,16 +81,7 @@ public class MainActivity extends AppCompatActivity
                         txtCourseName.getText().toString(),
                         txtStartDate.getText().toString(),
                         Integer.parseInt(txtLength.getText().toString())));
-
-
-//                Log.d("Jay", "Add button was clicked");
-//
-//                courseList.add(new Course(txtCourseCode.getText().toString(),
-//                        txtCourseName.getText().toString(),
-//                        txtStartDate.getText().toString(),
-//                        Integer.parseInt(txtLength.getText().toString())));
             }
         });
-
     }
 }
