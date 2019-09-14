@@ -1,9 +1,12 @@
 package com.example.day8application;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.DataSetObserver;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -23,7 +27,7 @@ public class MainActivity extends AppCompatActivity
 {
     // reference variables
     EditText txtCourseCode, txtCourseName, txtStartDate, txtLength;
-    Button btnAdd;
+    Button btnAdd, btnThemeChange;
     ListView lvCourses;
     ArrayList<Course> courseList = new ArrayList<>();
     ArrayList<HashMap<String, String>> data;
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity
         txtStartDate = findViewById(R.id.txtStartD);
         txtLength = findViewById(R.id.txtLength);
         lvCourses = findViewById(R.id.lvCourses);
+        // theme change button
+        btnThemeChange = findViewById(R.id.btnThemeChange);
 
         // create hash map
         data = new ArrayList<>();
@@ -48,7 +54,6 @@ public class MainActivity extends AppCompatActivity
         // set scroll to true for list
         lvCourses.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
         lvCourses.setStackFromBottom(true);
-
 
         // course item
         String[] from = { "code", "name" };
@@ -81,6 +86,18 @@ public class MainActivity extends AppCompatActivity
                         txtCourseName.getText().toString(),
                         txtStartDate.getText().toString(),
                         Integer.parseInt(txtLength.getText().toString())));
+            }
+        });
+
+        btnThemeChange.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                View currentLayout = findViewById(R.id.home_constrained_layout);
+                View root = currentLayout.getRootView();
+                root.setBackgroundColor(Color.parseColor("#c0ffb3"));
+                //setTheme(R.style.ThemeChange);
             }
         });
     }

@@ -8,6 +8,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_constrained_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
@@ -66,7 +67,8 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="@+id/textView5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView5" />
+            app:layout_constraintStart_toEndOf="@+id/textView5"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/txtStartD"
@@ -116,17 +118,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <ListView
-            android:id="@+id/lvCourses"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="32dp"
-            android:scrollbars="vertical"
-            android:stackFromBottom="true"
-            android:transcriptMode="alwaysScroll"
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
+            app:layout_constraintTop_toBottomOf="@+id/btnAdd">
+
+            <ListView
+                android:id="@+id/lvCourses"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp"
+                android:scrollbars="vertical"
+                android:stackFromBottom="true"
+                android:transcriptMode="alwaysScroll"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btnThemeChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Change Theme"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
