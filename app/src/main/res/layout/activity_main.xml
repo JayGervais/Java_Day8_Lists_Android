@@ -11,10 +11,13 @@
         android:id="@+id/home_constrained_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:fadeScrollbars="true"
+        android:isScrollContainer="true"
+        android:visibility="visible">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/lblCourseCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -25,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/lblCourseName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_16"
@@ -33,10 +36,10 @@
             android:text="@string/course_name"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/lblCourseCode" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/lblStartDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_16"
@@ -44,10 +47,10 @@
             android:text="@string/start_date"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toBottomOf="@+id/lblCourseName" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/lblLength"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_16"
@@ -55,7 +58,7 @@
             android:text="@string/course_length"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/lblStartDate" />
 
         <EditText
             android:id="@+id/txtCourseCode"
@@ -64,11 +67,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:ems="10"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+            app:layout_constraintBottom_toBottomOf="@+id/lblCourseCode"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView5"
-            android:importantForAutofill="no" />
+            app:layout_constraintStart_toEndOf="@+id/lblCourseCode" />
 
         <EditText
             android:id="@+id/txtStartD"
@@ -79,9 +82,9 @@
             android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintBottom_toBottomOf="@+id/lblStartDate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView" />
+            app:layout_constraintStart_toEndOf="@+id/lblStartDate" />
 
         <EditText
             android:id="@+id/txtLength"
@@ -92,9 +95,9 @@
             android:autofillHints=""
             android:ems="10"
             android:inputType="number"
-            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintBottom_toBottomOf="@+id/lblLength"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView2" />
+            app:layout_constraintStart_toEndOf="@+id/lblLength" />
 
         <EditText
             android:id="@+id/txtCourseName"
@@ -104,9 +107,9 @@
             android:layout_marginEnd="@dimen/padding_16"
             android:ems="10"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintBottom_toBottomOf="@+id/lblCourseName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView6" />
+            app:layout_constraintStart_toEndOf="@+id/lblCourseName" />
 
         <Button
             android:id="@+id/btnAdd"
@@ -116,27 +119,17 @@
             android:layout_marginTop="32dp"
             android:text="@string/btn_add"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/lblLength" />
 
         <FrameLayout
             android:id="@+id/frameLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAdd">
-
-            <ListView
-                android:id="@+id/lvCourses"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="32dp"
-                android:scrollbars="vertical"
-                android:stackFromBottom="true"
-                android:transcriptMode="alwaysScroll"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </FrameLayout>
 
@@ -144,8 +137,8 @@
             android:id="@+id/btnThemeChange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:text="Change Theme"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
@@ -158,6 +151,47 @@
             android:text="Change Back"
             app:layout_constraintBottom_toBottomOf="@+id/btnThemeChange"
             app:layout_constraintStart_toEndOf="@+id/btnThemeChange" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnThemeChange">
+
+            <RadioButton
+                android:id="@+id/rbFontLg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Large Font" />
+
+            <RadioButton
+                android:id="@+id/rbSmallFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Small Font" />
+        </RadioGroup>
+
+        <ListView
+            android:id="@+id/lvCourses"
+            style="@android:style/Widget.DeviceDefault.Light.ListView.DropDown"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="288dp"
+            android:animateLayoutChanges="true"
+            android:headerDividersEnabled="true"
+            android:isScrollContainer="true"
+            android:nestedScrollingEnabled="true"
+            android:scrollIndicators="top"
+            android:stackFromBottom="true"
+            android:transcriptMode="alwaysScroll"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="2dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

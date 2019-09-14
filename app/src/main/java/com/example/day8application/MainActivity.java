@@ -10,6 +10,7 @@ import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -33,9 +35,11 @@ public class MainActivity extends AppCompatActivity
     // reference variables
     EditText txtCourseCode, txtCourseName, txtStartDate, txtLength;
     Button btnAdd, btnThemeChange, btnChangeBack;
+    RadioButton rbFontLg, rbSmallFont;
     ListView lvCourses;
     ArrayList<Course> courseList = new ArrayList<>();
     ArrayList<HashMap<String, String>> data;
+    TextView lblCourseCode, lblCourseName, lblStartDate, lblLength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,6 +57,13 @@ public class MainActivity extends AppCompatActivity
         // theme change button
         btnThemeChange = findViewById(R.id.btnThemeChange);
         btnChangeBack = findViewById(R.id.btnChangeBack);
+        rbFontLg = findViewById(R.id.rbFontLg);
+        rbSmallFont = findViewById(R.id.rbSmallFont);
+        // theme change text views
+        lblCourseCode = findViewById(R.id.lblCourseCode);
+        lblCourseName = findViewById(R.id.lblCourseName);
+        lblStartDate = findViewById(R.id.lblStartDate);
+        lblLength = findViewById(R.id.lblLength);
 
         // create hash map
         data = new ArrayList<>();
@@ -116,6 +127,30 @@ public class MainActivity extends AppCompatActivity
                 View root = currentLayout.getRootView();
                 root.setBackgroundColor(Color.parseColor("#ffffff"));
                 //setTheme(R.style.ThemeChange);
+            }
+        });
+
+        rbFontLg.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                lblCourseCode.setTextSize(TypedValue.COMPLEX_UNIT_SP,25);
+                lblCourseName.setTextSize(TypedValue.COMPLEX_UNIT_SP,25);
+                lblStartDate.setTextSize(TypedValue.COMPLEX_UNIT_SP,25);
+                lblLength.setTextSize(TypedValue.COMPLEX_UNIT_SP,25);
+            }
+        });
+
+        rbSmallFont.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                lblCourseCode.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+                lblCourseName.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+                lblStartDate.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+                lblLength.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
             }
         });
     }
